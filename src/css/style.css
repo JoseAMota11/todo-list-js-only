@@ -50,29 +50,11 @@ input[type="text"] {
   border-radius: 0.8rem;
 }
 
-.search {
-  width: 5rem;
-  height: 5rem;
-  display: inline-grid;
-  place-content: center;
-  border: none;
-  background-color: #378FFF;
-  border-radius: 50%;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
-
-.search ion-icon {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-}
-
 .todo {
   width: 45rem;
   align-self: center;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .list {
@@ -83,9 +65,9 @@ input[type="text"] {
   padding: 0.6rem;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(0.6rem);
-  -webkit-backdrop-filter: blur(0.6rem);
+  /* -webkit-backdrop-filter: blur(0.6rem); */
   box-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.2);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: justify;
   display: grid;
   grid-template-columns: auto 30rem auto auto;
@@ -108,6 +90,7 @@ input[type="text"] {
   place-content: center;
   border: none;
   border-radius: 50%;
+  font-size: 2.2rem;
 }
 
 #done:hover {
@@ -115,27 +98,30 @@ input[type="text"] {
 }
 
 #edit {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   place-self: center;
   display: grid;
   place-content: center;
   border: none;
   border-radius: 50%;
+  font-size: 2.2rem;
 }
 
+
 #edit:hover {
-  color: #2CB5C8;
+  color: #0061FF;
 }
 
 #delete {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   place-self: center;
   display: grid;
   place-content: center;
   border: none;
   border-radius: 50%;
+  font-size: 2.2rem;
 }
 
 #delete:hover {
@@ -145,14 +131,14 @@ input[type="text"] {
 #add {
   width: 5rem;
   height: 5rem;
-  place-self: center;
-  display: grid;
+  display: inline-grid;
   place-content: center;
   border: none;
+  background-color: #378FFF;
   border-radius: 50%;
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0);
+  cursor: pointer;
+  color: #f0f0f0;
 }
 
 #add ion-icon {
