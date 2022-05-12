@@ -11,8 +11,8 @@ function showData() {
     arr.forEach(element => {
       let li = document.createElement("li")
       li.id = "list"
-      li.className = "list"
-      li.append(createDoneItem(), element.todo, createEditItem(), createDeleteItem(), createSpan(element.id))
+      li.className = element.status === true ? "finished" : "list"
+      li.append(createDoneItem(), textHolder(element.todo), createEditItem(), createDeleteItem(), createSpan(element.id))
       ul.append(li)
     })
   }
@@ -42,6 +42,12 @@ function createEditItem() {
   return editItem
 }
 
+function textHolder(element) {
+  const span = document.createElement("span")
+  span.textContent = element
+  return span
+}
+
 function createSpan(id) {
   const span = document.createElement("span")
   span.textContent = id
@@ -50,10 +56,10 @@ function createSpan(id) {
 }
 
 function deleteItemEvent(e) {
-  const id = e.composedPath()[1].childNodes[4].innerText
+  const id = Number.parseInt(e.composedPath()[1].childNodes[4].innerText)
   let arr = JSON.parse(localStorage.getItem("todos"))
   let newArr = arr.filter(element => {
-    return element.id !== Number.parseInt(id)
+    return element.id !== id
   })
   localStorage.setItem("todos", JSON.stringify(newArr))
   ul.innerHTML = ""
@@ -61,8 +67,17 @@ function deleteItemEvent(e) {
 }
 
 function doneItemEvent(e) {
-  const todoText = e.composedPath()
-  console.log(todoText)
+  const id = Number.parseInt(e.composedPath()[1].childNodes[4].innerText)
+  let arr = JSON.parse(localStorage.getItem("todos"))
+  let newArr = arr.map(element => {
+    if (element.id === id) {
+      element.status = !element.status
+    }
+    return element
+  })
+  localStorage.setItem("todos", JSON.stringify(newArr))
+  ul.innerHTML = ""
+  showData()
 }
 
 function editItemEvent(e) {
