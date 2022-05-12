@@ -12,7 +12,7 @@ function showData() {
       let li = document.createElement("li")
       li.id = "list"
       li.className = "list"
-      li.append(createDoneItem(), element.todo, createEditItem(), createDeleteItem())
+      li.append(createDoneItem(), element.todo, createEditItem(), createDeleteItem(), createSpan(element.id))
       ul.append(li)
     })
   }
@@ -42,14 +42,27 @@ function createEditItem() {
   return editItem
 }
 
+function createSpan(id) {
+  const span = document.createElement("span")
+  span.textContent = id
+  span.setAttribute("hidden", "true")
+  return span
+}
+
 function deleteItemEvent(e) {
-  const todoText = e.composedPath()[1].innerText
+  const id = e.composedPath()[1].childNodes[4].innerText
   let arr = JSON.parse(localStorage.getItem("todos"))
-  arr.forEach(element => console.log(element.id))
+  let newArr = arr.filter(element => {
+    return element.id !== Number.parseInt(id)
+  })
+  localStorage.setItem("todos", JSON.stringify(newArr))
+  ul.innerHTML = ""
+  showData()
 }
 
 function doneItemEvent(e) {
-  const todoText = e.composedPath()[1].innerText
+  const todoText = e.composedPath()
+  console.log(todoText)
 }
 
 function editItemEvent(e) {
