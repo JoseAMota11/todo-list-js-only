@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  width: 50rem;
+  height: 65rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.title {
+  align-self: center;
+  font-size: 2.8rem;
+}
+
+.form {
+  width: 45rem;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  width: 38.5rem;
+  height: 5rem;
+  border: none;
+  text-indent: 0.6rem;
+  background-color: #f0f0f0;
+  border-radius: 0.8rem;
+}
+
+.search {
+  width: 5rem;
+  height: 5rem;
+  display: inline-grid;
+  place-content: center;
+  border: none;
+  background-color: #378FFF;
+  border-radius: 50%;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.search ion-icon {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.todo {
+  width: 45rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+  min-height: 6rem;
+  border-radius: 0.8rem;
+  padding: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
+  box-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  text-align: justify;
+  display: grid;
+  grid-template-columns: auto 30rem auto auto;
+  grid-gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.list ion-icon {
+  font-size: 2rem;
+  font-weight: 700;
+  align-self: center;
+}
+
+#done {
+  width: 3.5rem;
+  height: 3.5rem;
+  place-self: center;
+  display: grid;
+  place-content: center;
+  border: none;
+  border-radius: 50%;
+}
+
+#done:hover {
+  color: #23A42A;
+}
+
+#edit {
+  width: 3.5rem;
+  height: 3.5rem;
+  place-self: center;
+  display: grid;
+  place-content: center;
+  border: none;
+  border-radius: 50%;
+}
+
+#edit:hover {
+  color: #2CB5C8;
+}
+
+#delete {
+  width: 3.5rem;
+  height: 3.5rem;
+  place-self: center;
+  display: grid;
+  place-content: center;
+  border: none;
+  border-radius: 50%;
+}
+
+#delete:hover {
+  color: #C62323;
+}
+
+#add {
+  width: 5rem;
+  height: 5rem;
+  place-self: center;
+  display: grid;
+  place-content: center;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+#add ion-icon {
+  font-size: 3rem;
+  font-weight: 700;
+}
