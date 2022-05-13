@@ -6,9 +6,9 @@ document.querySelector("#add").addEventListener("click", (e) => {
   window.open("../public/addTodo.html", "_self")
 })
 
-function showData() {
+function showData(key) {
   if (localStorage.length > 0) {
-    let arr = JSON.parse(localStorage.getItem("todos"))
+    let arr = JSON.parse(localStorage.getItem(key))
     arr.forEach(element => {
       createTodo(element)
     })
@@ -57,7 +57,7 @@ function deleteItemEvent(e) {
   })
   localStorage.setItem("todos", JSON.stringify(newArr))
   ul.innerHTML = ""
-  showData()
+  showData("todos")
 }
 
 function doneItemEvent(e) {
@@ -71,13 +71,31 @@ function doneItemEvent(e) {
   })
   localStorage.setItem("todos", JSON.stringify(newArr))
   ul.innerHTML = ""
-  showData()
+  showData("todos")
 }
 
 function editItemEvent(e) {
   const todoText = e.composedPath()[1].innerText
 }
 
+searchInput.addEventListener("keyup", () => {
+  let { value } = searchInput
+  value = value.toLowerCase()
+  let arr = JSON.parse(localStorage.getItem("todos"))
+  if (value) {
+    let newArr = arr.filter(element => {
+      return element.todo.toLowerCase().includes(value)
+    })
+    localStorage.setItem("search", JSON.stringify(newArr))
+    ul.innerHTML = ""
+    showData("search")
+  } else {
+    ul.innerHTML = ""
+    showData("todos")
+    localStorage.removeItem("search")
+  }
+})
+
 window.document.addEventListener("DOMContentLoaded", () => {
-  showData()
+  showData("todos")
 })
