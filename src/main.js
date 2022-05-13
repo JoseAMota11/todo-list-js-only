@@ -1,4 +1,5 @@
 const ul = document.querySelector("#todo")
+const searchInput = document.querySelector("#searchInput")
 
 document.querySelector("#add").addEventListener("click", (e) => {
   e.preventDefault()
@@ -9,37 +10,30 @@ function showData() {
   if (localStorage.length > 0) {
     let arr = JSON.parse(localStorage.getItem("todos"))
     arr.forEach(element => {
-      let li = document.createElement("li")
-      li.id = "list"
-      li.className = element.status === true ? "finished" : "list"
-      li.append(createDoneItem(), textHolder(element.todo), createEditItem(), createDeleteItem(), createSpan(element.id))
-      ul.append(li)
+      createTodo(element)
     })
   }
 }
 
-function createDeleteItem() {
-  const deleteItem = document.createElement("i")
-  deleteItem.id = "delete"
-  deleteItem.className = "fa-solid fa-trash"
-  deleteItem.addEventListener("click", deleteItemEvent)
-  return deleteItem
+function createTodo(element) {
+  let li = document.createElement("li")
+  li.id = "list"
+  li.className = element.status === true ? "finished" : "list"
+  li.append(
+    createElement("done", "fa-regular fa-circle-check", doneItemEvent), 
+    textHolder(element.todo), 
+    createElement("edit", "fa-solid fa-pen-to-square", editItemEvent), 
+    createElement("delete", "fa-solid fa-trash", deleteItemEvent), 
+    createSpan(element.id))
+  ul.append(li)
 }
 
-function createDoneItem() {
-  const doneItem = document.createElement("i")
-  doneItem.id = "done"
-  doneItem.className = "fa-regular fa-circle-check"
-  doneItem.addEventListener("click", doneItemEvent)
-  return doneItem
-}
-
-function createEditItem() {
-  const editItem = document.createElement("i")
-  editItem.id = "edit"
-  editItem.className = "fa-solid fa-pen-to-square"
-  editItem.addEventListener("click", editItemEvent)
-  return editItem
+function createElement(id, className, func) {
+  const item = document.createElement("i")
+  item.id = id
+  item.className = className
+  item.addEventListener("click", func)
+  return item
 }
 
 function textHolder(element) {
